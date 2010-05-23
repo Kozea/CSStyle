@@ -2,39 +2,52 @@
 C'n'Safe - CSS Made Safe
 ========================
 
-TODO: write documentation
+C'n'Safe is a simple CSS parser generating CSS adapted for various browsers.
 
 """
 
+import gecko
+import webkit
+
 class Parser(dict):
-    """TODO: docstring."""
+    """CSS parser."""
     def __init__(self, filenames):
-        """TODO: docstring."""
+        """Parse ``filename``."""
         if isinstance(filenames, basestring):
             filenames = (filenames,)
 
         for filename in filenames:
             with open(filename) as fd:
-                self._parse_blocks(fd.read())
+                self._parse_sections(fd.read())
 
     def __repr__(self):
-        """TODO: docstring."""
+        """Represent parsed CSS."""
         string = ''
 
         for name, attributes in self.items():
-            string += '%s {\n' % name
+            string += self.begin_section(name)
             for attribute, value in attributes.items():
-                string += '  %s: %s;\n' % (attribute, value)
-            string += '}\n\n'
+                string += self.attribute(attribute, value)
+            string += self.end_section(name)
 
         return string
 
-    def _parse_blocks(self, string):
-        """TODO: docstring."""
-        blocks = {}
+    def begin_section(self, name):
+        """Return a section beginning string."""
+        return '%s {\n' % name
+        
+    def end_section(self, name):
+        """Return a section ending string."""
+        return '}\n\n'
+        
+    def attribute(self, attribute, value):
+        """Return an attribute string."""
+        return '  %s: %s;\n' % (attribute, value)
+
+    def _parse_sections(self, string):
+        """Parse sections."""
         string = string.replace('\n', '')
 
-        in_block = False
         in_comment = False
         possible_comment_begin = False
         possible_comment_end = False
@@ -52,12 +65,13 @@ class Parser(dict):
                     possible_comment_end = False
             else:
                 if char == '{':
-                    in_block == True
                     name = text.strip()
                     text = ''
                 elif char == '}':
-                    in_block == False
-                    self[name] = self._parse_attributes(text)
+                    if name in self:
+                        self[name].update(self._parse_attributes(text))
+                    else:
+                        self[name] = self._parse_attributes(text)
                     text = ''
                 elif char == '*' and possible_comment_start:
                     possible_comment_start = False
@@ -69,7 +83,7 @@ class Parser(dict):
                     text += char
 
     def _parse_attributes(self, string):
-        """TODO: docstring."""
+        """Parse and return attributes in section."""
         attributes = {}
 
         for expression in string.split(';'):
