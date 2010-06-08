@@ -78,8 +78,7 @@ class Parser(dict):
                     in_comment = True
                     text = text[:-1]
                 else:
-                    if char == '/':
-                        possible_comment_start = True
+                    possible_comment_start = (char == '/')
                     text += char
 
     def _parse_attributes(self, string):
