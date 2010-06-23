@@ -32,6 +32,8 @@ def transform(parser, keep_existant=True):
                 string += parser.attribute('-webkit-%s' % attribute, value)
             elif attribute.startswith('transition'):
                 string += parser.attribute('-webkit-%s' % attribute, value)
+            elif attribute.startswith('transform'):
+                string += parser.attribute('-webkit-%s' % attribute, value)
 
         string += parser.end_section(name)
 
