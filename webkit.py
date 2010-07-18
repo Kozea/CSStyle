@@ -25,6 +25,8 @@ def transform(parser, keep_existant=True):
                     string_values = ' / '.join(values)
                     string_position = '-webkit-border-%s-radius' % position
                     section[string_position] = string_values
+            elif attribute == 'text-outline':
+                section['-webkit-text-stroke'] = value
             elif 'border' in attribute and 'radius' in attribute:
                 section['-webkit-%s' % attribute] = value
             elif attribute == 'box-shadow':
