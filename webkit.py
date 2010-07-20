@@ -27,6 +27,11 @@ def transform(parser, keep_existant=True):
                     section[string_position] = string_values
             elif attribute == 'text-outline':
                 section['-webkit-text-stroke'] = value
+            elif attribute == 'box-reflect':
+                for inner_attribute in ('gradient',):
+                    value = value.replace(' %s' % inner_attribute,
+                                          ' -webkit-%s' % inner_attribute)
+                section['-webkit-%s' % attribute] = value
             elif 'border' in attribute and 'radius' in attribute:
                 section['-webkit-%s' % attribute] = value
             elif attribute == 'box-shadow':
