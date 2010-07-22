@@ -1,6 +1,6 @@
 """
-C'n'Safe Webkit Parser
-======================
+C'n'Safe Gecko Parser
+=====================
 
 CSS transformer for Gecko.
 
