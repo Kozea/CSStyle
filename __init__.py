@@ -8,6 +8,7 @@ C'n'Safe is a simple CSS parser generating CSS adapted for various browsers.
 
 import gecko
 import webkit
+import presto
 
 class Parser(dict):
     """CSS parser."""
