@@ -5,10 +5,11 @@ C'n'Safe Presto Parser
 CSS transformer for Presto.
 
 """
+from _helpers import odict
 
 def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
-        section = {}
+        section = odict()
 
         for attribute, value in attributes.items():
             if keep_existant:

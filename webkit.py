@@ -10,7 +10,7 @@ from . import _helpers
 
 def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
-        section = {}
+        section = _helpers.odict()
 
         for attribute, value in attributes.items():
             if keep_existant:
