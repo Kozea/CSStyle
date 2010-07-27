@@ -1,6 +1,7 @@
 from itertools import izip, imap
 from copy import deepcopy
         
+
 def split_values(values):
     if '/' in values:
         values_list = [values_part.split() for values_part in values.split('/')]
@@ -19,46 +20,34 @@ def split_values(values):
 
     return zip(*full_lists)
 
-# -*- coding: utf-8 -*-
 
 class odict(dict):
     def __init__(self):
-        dict.__init__(self)
+        super(odict, self).__init__()
         self._keys = []
 
     def __delitem__(self, key):
-        dict.__delitem__(self, key)
+        super(odict, self).__delitem__(key)
         self._keys.remove(key)
 
     def __setitem__(self, key, item):
         if key not in self:
             self._keys.append(key)
-        dict.__setitem__(self, key, item)
+        super(odict, self).__setitem__(key, item)
 
-    def items(self):
-        return zip(self._keys, self.values())
+    items = lambda self: zip(self._keys, self.values())
 
-    def iteritems(self):
-        return izip(self._keys, self.itervalues())
+    iteritems = lambda self: izip(self._keys, self.itervalues())
 
-    def keys(self):
-        return self._keys[:]
+    keys = lambda self: self._keys[:]
 
-    def iterkeys(self):
-        return iter(self._keys)
+    iterkeys = lambda self: iter(self._keys)
 
-    def values(self):
-        return map(self.get, self._keys)
+    values = lambda self: map(self.get, self._keys)
 
-    def itervalues(self):
-        return imap(self.get, self._keys)
+    itervalues = lambda self: imap(self.get, self._keys)
  
     __iter__ = iterkeys
 
-#dic = {}
-#dic['1'] = 10
-#dic['5'] = 6
-#dic['2'] = 3
-
-#for key in dic.keys():
-    #print '%s : %s' % (key, dic[key])
+    __repr__ = lambda self: '{%s}' % ', '.join(
+        '%s: %s' % (repr(key), repr(value)) for key, value in self.items())
