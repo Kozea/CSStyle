@@ -1,11 +1,13 @@
 """
-C'n'Safe Gecko Parser
-=====================
+CSstyle Gecko Parser
+====================
 
-CSS transformer for Gecko.
+CSS transformer for Gecko-based browsers (Firefox).
 
 """
-from _helpers import odict
+
+from ._helpers import odict
+
 
 def transform(parser, keep_existant=True):
     for name, attributes in parser.items():

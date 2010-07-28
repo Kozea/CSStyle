@@ -1,11 +1,13 @@
 """
-C'n'Safe Presto Parser
-======================
+CSStyle Presto Parser
+=====================
 
-CSS transformer for Presto.
+CSS transformer for Presto-based browsers (Opera).
 
 """
-from _helpers import odict
+
+from ._helpers import odict
+
 
 def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
@@ -20,7 +22,6 @@ def transform(parser, keep_existant=True):
                 section['-o-%s' % attribute] = value
             elif attribute.startswith('transition'):
                 section['-o-%s' % attribute] = value
-            
 
         parser[name] = section
 

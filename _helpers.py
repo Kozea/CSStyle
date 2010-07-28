@@ -1,6 +1,11 @@
-from itertools import izip, imap
-from copy import deepcopy
-        
+try:
+    from itertools import izip, imap
+except ImportError:
+    imap = map
+    map = lambda function, iterable: tuple(imap(function, iterable))
+    izip = zip
+    zip = lambda *iterables: tuple(izip(*iterables))
+
 
 def split_values(values):
     if '/' in values:

@@ -1,16 +1,17 @@
 """
-C'n'Safe Webkit Parser
-======================
+CSStyle Webkit Parser
+=====================
 
-CSS transformer for Webkit.
+CSS transformer for Webkit-based browsers (Safari, Chrome).
 
 """
 
-from . import _helpers
+from ._helpers import odict, split_values
+
 
 def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
-        section = _helpers.odict()
+        section = odict()
 
         for attribute, value in attributes.items():
             if keep_existant:
@@ -18,7 +19,7 @@ def transform(parser, keep_existant=True):
 
             # Parsing attributes
             if attribute == 'border-radius':
-                splitted_values = _helpers.split_values(value)
+                splitted_values = split_values(value)
                 positions = (
                     'top-left', 'top-right', 'bottom-right', 'bottom-left')
                 for position, values in zip(positions, splitted_values):
