@@ -14,6 +14,10 @@ def transform(parser, keep_existant=True):
         section = odict()
         force_keep_existant = False
 
+        if isinstance(attributes, basestring):
+            parser[name] = odict()
+            continue
+
         # Parsing sections
         if '::selection' in name:
             parser[name] = {}

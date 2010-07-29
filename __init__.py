@@ -32,8 +32,11 @@ class Parser(odict):
         for name, attributes in self.items():
             if attributes:
                 string += self.begin_section(name)
-                for attribute, value in attributes.items():
-                    string += self.attribute(attribute, value)
+                if isinstance(attributes, basestring):
+                    string += attributes + '\n'
+                else:
+                    for attribute, value in attributes.items():
+                        string += self.attribute(attribute, value)
                 string += self.end_section(name)
 
         return string
@@ -52,12 +55,11 @@ class Parser(odict):
 
     def _parse_sections(self, string):
         """Parse sections."""
-        string = string.replace('\n', '')
-
         in_comment = False
         possible_comment_begin = False
         possible_comment_end = False
         text = ''
+        brace_counter = 0
 
         # TODO: ignore /* and */ in strings
         for char in string:
@@ -71,14 +73,22 @@ class Parser(odict):
                     possible_comment_end = False
             else:
                 if char == '{':
-                    name = text.strip()
-                    text = ''
-                elif char == '}':
-                    if name in self:
-                        self[name].update(self._parse_attributes(text))
+                    brace_counter += 1
+                    if brace_counter == 1:
+                        name = text.strip()
+                        text = ''
                     else:
-                        self[name] = self._parse_attributes(text)
-                    text = ''
+                        text += char
+                elif char == '}':
+                    brace_counter -= 1
+                    if not brace_counter:
+                        if self.get(name):
+                            self[name].update(self._parse_attributes(text))
+                        else:
+                            self[name] = self._parse_attributes(text)
+                        text = ''
+                    else:
+                        text += char
                 elif char == '*' and possible_comment_start:
                     possible_comment_start = False
                     in_comment = True
@@ -90,6 +100,9 @@ class Parser(odict):
     def _parse_attributes(self, string):
         """Parse and return attributes in section."""
         attributes = odict()
+
+        if '{' in string:
+            return string
 
         for expression in string.split(';'):
             expression = expression.strip()

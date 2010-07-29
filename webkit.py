@@ -13,6 +13,16 @@ def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
         section = odict()
 
+        # Parsing sections
+        if '@keyframes' in name:
+            parser[name] = {}
+            parser[name.replace('@keyframes', '@-webkit-keyframes')] = attributes
+            continue
+
+        if isinstance(attributes, basestring):
+            parser[name] = odict()
+            continue
+
         for attribute, value in attributes.items():
             if keep_existant:
                 section[attribute] = value
@@ -36,6 +46,8 @@ def transform(parser, keep_existant=True):
             elif 'border' in attribute and 'radius' in attribute:
                 section['-webkit-%s' % attribute] = value
             elif attribute == 'box-shadow':
+                section['-webkit-%s' % attribute] = value
+            elif attribute.startswith('animation'):
                 section['-webkit-%s' % attribute] = value
             elif attribute.startswith('transition'):
                 section['-webkit-%s' % attribute] = value

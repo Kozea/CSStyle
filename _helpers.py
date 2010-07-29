@@ -40,6 +40,10 @@ class odict(dict):
             self._keys.append(key)
         super(odict, self).__setitem__(key, item)
 
+    def update(self, dictionary):
+        for key, value in dictionary.items():
+            self[key] = value
+
     items = lambda self: zip(self._keys, self.values())
 
     iteritems = lambda self: izip(self._keys, self.itervalues())

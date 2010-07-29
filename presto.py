@@ -13,6 +13,10 @@ def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
         section = odict()
 
+        if isinstance(attributes, basestring):
+            parser[name] = odict()
+            continue
+
         for attribute, value in attributes.items():
             if keep_existant:
                 section[attribute] = value
