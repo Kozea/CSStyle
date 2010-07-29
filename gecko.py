@@ -33,7 +33,7 @@ def transform(parser, keep_existant=True):
                 section['-moz-%s' % attribute] = value
             elif 'border' in attribute and 'radius' in attribute:
                 section['-moz-%s' % attribute] = value
-            elif attribute.startswith('transition'):
+            elif attribute.startswith('transform'):
                 section['-moz-%s' % attribute] = value
 
         parser[name] = section
