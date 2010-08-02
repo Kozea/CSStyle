@@ -20,7 +20,7 @@ and what it does not.
 Technical choices
 =================
 
-This document describes the global technical choices of the Radicale Project
+This document describes the global technical choices of the CSStyle Project
 and the global architectures of its different parts.
 
 - `Technical choices <technical_choices>`_
