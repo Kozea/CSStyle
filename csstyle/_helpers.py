@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 try:
     from itertools import izip, imap
 except ImportError:
@@ -44,6 +46,17 @@ class odict(dict):
         for key, value in dictionary.items():
             self[key] = value
 
+    def __deepcopy__(self, memo=None):
+        if memo is None:
+            memo = {}
+        d = memo.get(id(self))
+        if d is not None:
+            return d
+        memo[id(self)] = d = self.__class__()
+        dict.__init__(d, deepcopy(self.items(), memo))
+        d._keys = self._keys[:]
+        return d
+        
     items = lambda self: zip(self._keys, self.values())
 
     iteritems = lambda self: izip(self._keys, self.itervalues())
