@@ -16,7 +16,8 @@ def transform(parser, keep_existant=True):
         # Parsing sections
         if '@keyframes' in name:
             parser[name] = {}
-            parser[name.replace('@keyframes', '@-webkit-keyframes')] = attributes
+            parser[name.replace('@keyframes', '@-webkit-keyframes')] = \
+                transform(attributes, keep_existant)
             continue
 
         if isinstance(attributes, basestring):
