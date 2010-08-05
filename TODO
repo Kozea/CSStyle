@@ -6,7 +6,14 @@
  TODO
 ------
 
-0.1
+1.0
 ===
 
-* Full Docstring and testing
+* CSStyle online converter
+
+0.2
+===
+
+* Recursivity with more than 2 levels
+* Better @import support
+* Prettier output format (as close as it can be to original file)
