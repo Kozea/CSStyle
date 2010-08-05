@@ -19,3 +19,8 @@ Linux Distribution Packages
 ===========================
 
 CSStyle is not yet packaged. Coming soon.
+
+Python distutils Packages
+=========================
+
+CSStyle is available using easy_install in python.

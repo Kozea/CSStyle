@@ -29,21 +29,23 @@ CSStyle only converts values which are experimental in engines. As those values
 might not be experimental any more in the future and new ones become available,
 CSStyle ought to be updated often.
 CSStyle supports Gecko (Firefox), Webkit (Chrome, Safari, Epiphany) and Presto (Opera).
-There is currently no experimental CSS in Trident (IE8). 
+There is currently no experimental CSS in Trident (IE8).
+CSStyle understands @import and multiple level CSS.
 
 What CSStyle will Be
 ====================
-
-Future features
----------------
-
-CSStyle will soon support CSS trees with more than one level and CSS import.
 
 Likely evolution
 ----------------
 
 IE9 is supposed to have an improved CSS3 understanding. In that case IE9 engine
 will be supported by CSStyle.
+
+Ultimate evolution
+------------------
+
+The global aim of this project is to be the more easy to use as possible.
+So an online user interface may be implemented in further versions.
 
 What CSStyle Is not and will not Be
 ===================================
@@ -52,4 +54,4 @@ Specific CSS issue
 ------------------
 
 CSStyle is used to generate CSS automatically, there will be no management of
-specific cases or CSS verification for browsers.
+specific cases or CSS check for browsers.
