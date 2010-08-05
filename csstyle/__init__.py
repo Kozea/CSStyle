@@ -144,7 +144,12 @@ class Parser(odict):
                     else:
                         text += char
                         if self.get(name):
-                            self[name].update(Parser(text=text))
+                            parser = Parser(text=text)
+                            for key, value in parser.items():
+                                if key in self[name]:
+                                    self[name][key].update(parser[key])
+                                else:
+                                    self[name][key] = parser[key]
                         else:
                             self[name] = Parser(text=text)
                         text = ''
