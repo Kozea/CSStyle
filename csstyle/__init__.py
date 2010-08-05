@@ -1,10 +1,30 @@
-"""
-CSStyle - CSS with Style
-========================
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# This file is part of CSStyle
+# Copyright © 2010 Kozea
+#
+# This library is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with CSStyle.  If not, see <http://www.gnu.org/licenses/>.
 
-CSStyle is a simple CSS parser generating CSS adapted for various browsers.
+"""
+CSStyle Parser
+==============
+
+Parser class for CSStyle.
 
 """
+
 import os
 from copy import deepcopy
 
@@ -13,7 +33,9 @@ from . import webkit
 from . import presto
 from ._helpers import odict
 
-BROWSERS = ('gecko', 'webkit', 'presto')
+VERSION = "git"
+
+BROWSERS = ('webkit', 'presto', 'gecko')
 
 class Parser(odict):
     """CSS parser."""
@@ -23,19 +45,30 @@ class Parser(odict):
 
         if isinstance(filenames, basestring):
             filenames = (filenames,)
-
-        # TODO: @import are processed even when commented
         for filename in filenames:
             with open(filename) as fd:
                 lines = fd.readlines()
-                content = '\n'.join(lines)
+                text += ''.join(lines)
+                in_comment = False
+                first_or_last_comment_line = False
+                
                 for line in lines:
-                    if '@import' in line:
+                    if '*/' in line:
+                        in_comment = False
+                        if line.split('*/')[-1] != '':
+                            line = line.split('*/')[-1]
+                            first_or_last_comment_line = True
+                    elif '/*' in line:
+                        in_comment = True
+                        if line.split('*/')[0] != '':
+                            line = line.split('/*')[0]
+                            first_or_last_comment_line = True
+                    if '@import' in line and (first_or_last_comment_line or not in_comment):
+                        first_or_last_comment_line = False
                         imported_file = \
                             line.strip(' ;\n').replace('@import', '').strip(' "\'')
-                        content += open(os.path.join(os.path.dirname(filename), 
+                        text += open(os.path.join(os.path.dirname(filename), 
                                                      imported_file)).read()
-                self._parse_sections(content)
         self._parse_sections(text)
     
     def __nonzero__(self):
@@ -43,8 +76,7 @@ class Parser(odict):
             if attributes:
                 return True
         return False
-        
-        
+                
     def __repr__(self):
         """Represent parsed CSS."""
         string = ''
@@ -52,9 +84,9 @@ class Parser(odict):
             if attributes:
                 string += self.begin_section(name)
                 if isinstance(attributes, basestring):
-                    string += attributes + '\n'
+                    string += attributes
                 elif isinstance(attributes, Parser):
-                    string += repr(attributes) + '\n'
+                    string += repr(attributes)
                 else:
                     for attribute, value in attributes.items():
                         string += self.attribute(attribute, value)
@@ -99,6 +131,7 @@ class Parser(odict):
                         name = text.strip()
                         text = ''
                     else:
+                        in_multi_level = True
                         text += char
                 elif char == '}':
                     brace_counter -= 1
@@ -115,7 +148,6 @@ class Parser(odict):
                         else:
                             self[name] = Parser(text=text)
                         text = ''
-                        in_multi_level = False
                 elif char == '*' and possible_comment_start:
                     possible_comment_start = False
                     in_comment = True
