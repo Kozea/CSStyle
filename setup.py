@@ -71,7 +71,7 @@ setup(
     provides=["csstyle"],
     scripts=["csstyle.py"],
     cmdclass={"build_scripts": BuildScripts},
-    keywords=["css"],
+    keywords=["css", "generator"],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",

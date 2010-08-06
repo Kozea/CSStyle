@@ -33,7 +33,7 @@ from . import webkit
 from . import presto
 from ._helpers import odict
 
-VERSION = "git"
+VERSION = "0.1"
 
 BROWSERS = ('webkit', 'presto', 'gecko')
 
