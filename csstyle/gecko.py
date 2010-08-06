@@ -14,7 +14,7 @@ def transform(parser, keep_existant=True):
         section = odict()
         force_keep_existant = False
 
-        if isinstance(attributes, basestring):
+        if isinstance(attributes, str):
             parser[name] = odict()
             continue
 

@@ -13,7 +13,7 @@ def transform(parser, keep_existant=True):
     for name, attributes in parser.items():
         section = odict()
 
-        if isinstance(attributes, basestring):
+        if isinstance(attributes, str):
             parser[name] = odict()
             continue
 

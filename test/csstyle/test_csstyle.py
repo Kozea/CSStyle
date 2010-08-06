@@ -1,7 +1,11 @@
 # coding: utf8
 
 import os
-from unittest2 import TestCase
+try:
+    from unittest2 import TestCase
+except:
+    from unittest import TestCase
+
 import copy
 from difflib import Differ
 from pprint import pprint

@@ -43,7 +43,7 @@ class Parser(odict):
         """Parse ``filename``."""
         super(Parser, self).__init__()
 
-        if isinstance(filenames, basestring):
+        if isinstance(filenames, str):
             filenames = (filenames,)
         for filename in filenames:
             with open(filename) as fd:
@@ -83,7 +83,7 @@ class Parser(odict):
         for name, attributes in self.items():
             if attributes:
                 string += self.begin_section(name)
-                if isinstance(attributes, basestring):
+                if isinstance(attributes, str):
                     string += attributes
                 elif isinstance(attributes, Parser):
                     string += repr(attributes)

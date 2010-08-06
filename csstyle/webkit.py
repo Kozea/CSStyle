@@ -20,7 +20,7 @@ def transform(parser, keep_existant=True):
                 transform(attributes, keep_existant)
             continue
 
-        if isinstance(attributes, basestring):
+        if isinstance(attributes, str):
             parser[name] = odict()
             continue
 
