@@ -36,6 +36,10 @@ import csstyle
 def run():
     parser = optparse.OptionParser(usage= 'csstyle file [file[..]] [options]')
     parser.add_option(
+        "-v", "--version", action="store_true",
+        default=False,
+        help="show version and exit")
+    parser.add_option(
         "-b", "--browser", action="append",
         dest="browser",
         help="select specific browser engine")
@@ -43,6 +47,10 @@ def run():
         "-s", "--strip", action="store_true",
         help="if specified, output will only include modified lines")
     options, args = parser.parse_args()
+
+    if options.version:
+        print(csstyle.VERSION)
+        sys.exit()
 
     if not options.browser:
         options.browser = csstyle.BROWSERS
