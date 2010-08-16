@@ -47,7 +47,8 @@ class Parser(OrderedDict):
             filenames = (filenames,)
         for filename in filenames:
             with open(filename) as file_descriptor:
-                lines = [line.strip() for line in file_descriptor.readlines()]
+                lines = [line.rstrip() + '\n'
+                         for line in file_descriptor.readlines()]
 
             text += ''.join(lines)
             in_comment = False
@@ -99,8 +100,7 @@ class Parser(OrderedDict):
     @staticmethod
     def begin_section(name):
         """Return a section beginning string."""
-        return '%s {\n' % ',\n'.join(
-            section.strip() for section in name.split(','))
+        return '%s {\n' % name
         
     @staticmethod
     def end_section():
