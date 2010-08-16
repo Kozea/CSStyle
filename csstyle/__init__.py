@@ -47,7 +47,7 @@ class Parser(odict):
             filenames = (filenames,)
         for filename in filenames:
             with open(filename) as fd:
-                lines = fd.readlines()
+                lines = [line.strip() for line in fd.readlines()]
                 text += ''.join(lines)
                 in_comment = False
                 first_or_last_comment_line = False
