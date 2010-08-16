@@ -25,6 +25,9 @@ Parser class for CSStyle.
 
 """
 
+BROWSERS = ('webkit', 'presto', 'gecko')
+VERSION = "git"
+
 import os
 from copy import deepcopy
 
@@ -33,9 +36,6 @@ from . import webkit
 from . import presto
 from ._helpers import odict
 
-VERSION = "0.1"
-
-BROWSERS = ('webkit', 'presto', 'gecko')
 
 class Parser(odict):
     """CSS parser."""
