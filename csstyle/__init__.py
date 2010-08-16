@@ -99,7 +99,8 @@ class Parser(OrderedDict):
     @staticmethod
     def begin_section(name):
         """Return a section beginning string."""
-        return '%s {\n' % name
+        return '%s {\n' % ',\n'.join(
+            section.strip() for section in name.split(','))
         
     @staticmethod
     def end_section():
