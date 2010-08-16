@@ -1,3 +1,8 @@
+"""
+CSStyle various helpers for parsers
+
+"""
+
 from copy import deepcopy
 
 try:
@@ -10,6 +15,7 @@ except ImportError:
 
 
 def split_values(values):
+    """Split given CSS attributes ``values``."""
     if '/' in values:
         values_list = [values_part.split() for values_part in values.split('/')]
     else:
@@ -28,34 +34,40 @@ def split_values(values):
     return zip(*full_lists)
 
 
-class odict(dict):
+class OrderedDict(dict):
+    """Dictionary that remembers insertion order."""
     def __init__(self):
-        super(odict, self).__init__()
+        """Initialize an ordered dictionary."""
+        super(OrderedDict, self).__init__()
         self._keys = []
 
     def __delitem__(self, key):
-        super(odict, self).__delitem__(key)
+        """od.__delitem__(y) <==> del od[y]"""
+        super(OrderedDict, self).__delitem__(key)
         self._keys.remove(key)
 
     def __setitem__(self, key, item):
+        """od.__setitem__(i, y) <==> od[i]=y"""
         if key not in self:
             self._keys.append(key)
-        super(odict, self).__setitem__(key, item)
+        super(OrderedDict, self).__setitem__(key, item)
 
     def update(self, dictionary):
+        """D.update(E, **F) -> None.  Update D from dict/iterable E and F."""
         for key, value in dictionary.items():
             self[key] = value
 
     def __deepcopy__(self, memo=None):
+        """Make a deep copy of od."""
         if memo is None:
             memo = {}
-        d = memo.get(id(self))
-        if d is not None:
-            return d
-        memo[id(self)] = d = self.__class__()
-        dict.__init__(d, deepcopy(self.items(), memo))
-        d._keys = self._keys[:]
-        return d
+        dictionary = memo.get(id(self))
+        if dictionary is not None:
+            return dictionary
+        memo[id(self)] = dictionary = self.__class__()
+        dict.__init__(dictionary, deepcopy(self.items(), memo))
+        dictionary._keys = self._keys[:]
+        return dictionary
         
     items = lambda self: zip(self._keys, self.values())
 

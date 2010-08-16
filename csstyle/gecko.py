@@ -6,16 +6,17 @@ CSS transformer for Gecko-based browsers (Firefox).
 
 """
 
-from ._helpers import odict
+from ._helpers import OrderedDict
 
 
 def transform(parser, keep_existant=True):
+    """Add Gecko-specific attributes to ``parser``."""
     for name, attributes in parser.items():
-        section = odict()
+        section = OrderedDict()
         force_keep_existant = False
 
         if isinstance(attributes, str):
-            parser[name] = odict()
+            parser[name] = OrderedDict()
             continue
 
         # Parsing sections

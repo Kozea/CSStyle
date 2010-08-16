@@ -6,15 +6,16 @@ CSS transformer for Presto-based browsers (Opera).
 
 """
 
-from ._helpers import odict
+from ._helpers import OrderedDict
 
 
 def transform(parser, keep_existant=True):
+    """Add Presto-specific attributes to ``parser``."""
     for name, attributes in parser.items():
-        section = odict()
+        section = OrderedDict()
 
         if isinstance(attributes, str):
-            parser[name] = odict()
+            parser[name] = OrderedDict()
             continue
 
         for attribute, value in attributes.items():

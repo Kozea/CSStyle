@@ -34,10 +34,10 @@ from copy import deepcopy
 from . import gecko
 from . import webkit
 from . import presto
-from ._helpers import odict
+from ._helpers import OrderedDict
 
 
-class Parser(odict):
+class Parser(OrderedDict):
     """CSS parser."""
     def __init__(self, filenames=tuple(), text=''):
         """Parse ``filename``."""
@@ -46,33 +46,35 @@ class Parser(odict):
         if isinstance(filenames, str):
             filenames = (filenames,)
         for filename in filenames:
-            with open(filename) as fd:
-                lines = [line.strip() for line in fd.readlines()]
-                text += ''.join(lines)
-                in_comment = False
-                first_or_last_comment_line = False
-                
-                for line in lines:
-                    if '*/' in line:
-                        in_comment = False
-                        if line.split('*/')[-1] != '':
-                            line = line.split('*/')[-1]
-                            first_or_last_comment_line = True
-                    elif '/*' in line:
-                        in_comment = True
-                        if line.split('*/')[0] != '':
-                            line = line.split('/*')[0]
-                            first_or_last_comment_line = True
-                    if '@import' in line and (first_or_last_comment_line or not in_comment):
-                        first_or_last_comment_line = False
-                        imported_file = \
-                            line.strip(' ;\n').replace('@import', '').strip(' "\'')
-                        text += open(os.path.join(os.path.dirname(filename), 
-                                                     imported_file)).read()
+            with open(filename) as file_descriptor:
+                lines = [line.strip() for line in file_descriptor.readlines()]
+
+            text += ''.join(lines)
+            in_comment = False
+            first_or_last_comment_line = False
+
+            for line in lines:
+                if '*/' in line:
+                    in_comment = False
+                    if line.split('*/')[-1] != '':
+                        line = line.split('*/')[-1]
+                        first_or_last_comment_line = True
+                elif '/*' in line:
+                    in_comment = True
+                    if line.split('*/')[0] != '':
+                        line = line.split('/*')[0]
+                        first_or_last_comment_line = True
+                if '@import' in line and (
+                    first_or_last_comment_line or not in_comment):
+                    first_or_last_comment_line = False
+                    imported_file = \
+                        line.strip(' ;\n').replace('@import', '').strip(' "\'')
+                    text += open(os.path.join(
+                            os.path.dirname(filename), imported_file)).read()
         self._parse_sections(text)
     
     def __nonzero__(self):
-        for name, attributes in self.items():
+        for attributes in self.values():
             if attributes:
                 return True
         return False
@@ -90,19 +92,22 @@ class Parser(odict):
                 else:
                     for attribute, value in attributes.items():
                         string += self.attribute(attribute, value)
-                string += self.end_section(name)
+                string += self.end_section()
 
         return string
 
-    def begin_section(self, name):
+    @staticmethod
+    def begin_section(name):
         """Return a section beginning string."""
         return '%s {\n' % name
         
-    def end_section(self, name):
+    @staticmethod
+    def end_section():
         """Return a section ending string."""
         return '}\n\n'
         
-    def attribute(self, attribute, value):
+    @staticmethod
+    def attribute(attribute, value):
         """Return an attribute string."""
         return '  %s: %s;\n' % (attribute, value)
 
@@ -131,7 +136,6 @@ class Parser(odict):
                         name = text.strip()
                         text = ''
                     else:
-                        in_multi_level = True
                         text += char
                 elif char == '}':
                     brace_counter -= 1
@@ -147,23 +151,24 @@ class Parser(odict):
                             parser = Parser(text=text)
                             for key, value in parser.items():
                                 if key in self[name]:
-                                    self[name][key].update(parser[key])
+                                    self[name][key].update(value)
                                 else:
-                                    self[name][key] = parser[key]
+                                    self[name][key] = value
                         else:
                             self[name] = Parser(text=text)
                         text = ''
-                elif char == '*' and possible_comment_start:
-                    possible_comment_start = False
+                elif char == '*' and possible_comment_begin:
+                    possible_comment_begin = False
                     in_comment = True
                     text = text[:-1]
                 else:
-                    possible_comment_start = (char == '/')
+                    possible_comment_begin = (char == '/')
                     text += char
 
-    def _parse_attributes(self, string):
+    @staticmethod
+    def _parse_attributes(string):
         """Parse and return attributes in section."""
-        attributes = odict()
+        attributes = OrderedDict()
 
         if '{' in string:
             return string

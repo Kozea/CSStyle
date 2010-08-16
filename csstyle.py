@@ -24,16 +24,17 @@ Launch CSStyle according to configuration and command-line
 arguments.
 
 """
+
 from __future__ import print_function
-import os
 import sys
 import optparse
 import copy
 
 import csstyle
 
-# Get command-line options
+
 def run():
+    """Run CSStyle from command line."""
     parser = optparse.OptionParser(usage= 'csstyle file [file[..]] [options]')
     parser.add_option(
         "-v", "--version", action="store_true",
@@ -60,9 +61,10 @@ def run():
     for option in args:
         parser = csstyle.Parser(option)
         for engine in options.browser:
-            browser_parser= getattr(csstyle, engine)
-            print(browser_parser.transform(copy.deepcopy(parser), 
-                                          keep_existant=(not options.strip)), end='')
+            browser_parser = getattr(csstyle, engine)
+            stylesheet = browser_parser.transform(
+                copy.deepcopy(parser), keep_existant=(not options.strip))
+            print(stylesheet, end='')
                                           
 if __name__ == '__main__':
     run()

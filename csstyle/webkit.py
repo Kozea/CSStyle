@@ -6,12 +6,13 @@ CSS transformer for Webkit-based browsers (Safari, Chrome).
 
 """
 
-from ._helpers import odict, split_values
+from ._helpers import OrderedDict, split_values
 
 
 def transform(parser, keep_existant=True):
+    """Add Webkit-specific attributes to ``parser``."""
     for name, attributes in parser.items():
-        section = odict()
+        section = OrderedDict()
 
         # Parsing sections
         if '@keyframes' in name:
@@ -21,7 +22,7 @@ def transform(parser, keep_existant=True):
             continue
 
         if isinstance(attributes, str):
-            parser[name] = odict()
+            parser[name] = OrderedDict()
             continue
 
         for attribute, value in attributes.items():
