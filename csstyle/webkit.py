@@ -38,7 +38,7 @@ def transform(parser, keep_existant=True):
                     string_values = ' / '.join(values)
                     string_position = '-webkit-border-%s-radius' % position
                     section[string_position] = string_values
-            elif attribute == 'text-outline':
+            elif attribute == 'text-outline' or attribute == 'text-stroke':
                 section['-webkit-text-stroke'] = value
             elif attribute == 'box-reflect':
                 for inner_attribute in ('gradient',):
