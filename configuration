@@ -1,5 +1,6 @@
  
 {
+  "name": "CSStyle",
   "title": "CSStyle",
   "menu": [
     {"name": "News", "link": "/news"},
