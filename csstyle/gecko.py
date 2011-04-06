@@ -40,6 +40,8 @@ def transform(parser, keep_existant=True):
                 section['-moz-%s' % attribute] = value
             elif attribute.startswith('column'):
                 section['-moz-%s' % attribute] = value
+            elif attribute.startswith('box'):
+                section['-moz-%s' % attribute] = value
 
         parser[name] = section
 

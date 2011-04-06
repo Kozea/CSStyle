@@ -57,6 +57,8 @@ def transform(parser, keep_existant=True):
                 section['-webkit-%s' % attribute] = value
             elif attribute.startswith('column'):
                 section['-webkit-%s' % attribute] = value
+            elif attribute.startswith('box'):
+                section['-webkit-%s' % attribute] = value
 
         parser[name] = section
 
