@@ -30,7 +30,7 @@ def transform(parser, keep_existant=True):
                 section[attribute] = value
 
             # Parsing attributes
-            if attribute in ('border-radius', 'box-shadow', 'appearance'):
+            if attribute in ('border-radius', 'appearance'):
                 section['-moz-%s' % attribute] = value
             elif 'border' in attribute and 'radius' in attribute:
                 section['-moz-%s' % attribute] = value
