@@ -1,7 +1,6 @@
- 
 {
   "name": "CSStyle",
-  "title": "CSStyle",
+  "description": "CSS Preprocessor",
   "menu": [
     {"name": "News", "link": "/news"},
     {"name": "Documentation", "link": "/documentation"},
