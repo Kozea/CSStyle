@@ -47,7 +47,7 @@ def transform(parser, keep_existant=True):
                 section['-webkit-%s' % attribute] = value
             elif 'border' in attribute and 'radius' in attribute:
                 section['-webkit-%s' % attribute] = value
-            elif attribute == 'box-shadow':
+            elif attribute in ('box-shadow', 'appearance'):
                 section['-webkit-%s' % attribute] = value
             elif attribute.startswith('animation'):
                 section['-webkit-%s' % attribute] = value
