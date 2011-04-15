@@ -2,6 +2,14 @@
  Download
 ==========
 
+PyPI
+====
+
+CSStyle is `available on PyPI <http://pypi.python.org/pypi/CSStyle/>`_. To
+install, just type as superuser::
+
+  easy_install csstyle
+
 Git Repository
 ==============
 
@@ -9,18 +17,18 @@ If you want the development version of CSStyle, take a look at the `git
 repository on Gitorious <http://www.gitorious.org/csstyle/csstyle>`_, or
 clone it thanks to::
 
-  $ git clone git://gitorious.org/csstyle/csstyle.git
+  git clone git://gitorious.org/csstyle/csstyle.git
 
 You can also download the CSStyle package of the git repository:
 
 - `CSStyle-git.tar.gz <http://gitorious.org/csstyle/csstyle/archive-tarball/master>`_
 
-Python distutils Packages
-=========================
+Source Packages
+===============
 
-CSStyle is available using ``easy_install``::
+You can download the CSStyle package for each release:
 
-  $ easy_install csstyle
+- `CSStyle-0.1.tar.gz </src/csstyle/CSStyle-0.1.tar.gz>`_ (17 KiB)
 
 Linux Distribution Packages
 ===========================

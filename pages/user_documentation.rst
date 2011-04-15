@@ -18,7 +18,7 @@ Dependencies
 ------------
 
 CSStyle is written in pure python and does not depend on any librabry. It is
-known to work on Python 2.5, 2.6, 3.0 and 3.1.
+known to work on Python from 2.5 to 3.2.
 
 Linux users certainly have Python already installed. For Windows and MacOS
 users, please install Python [#]_ thanks to the adequate installer.
@@ -35,12 +35,12 @@ folder of your choice.
 You can install it by running setup.py.
 On Linux::
   
-  $ python setup.py install
+  python setup.py install
 
 CSStyle is also available with distutils, if you have it you can also install it 
 with::
 
-  $ easy_install csstyle
+  easy_install csstyle
 
 Simple Usage
 ============
@@ -59,8 +59,10 @@ Advanced Usage with Python Server
 If you want to use CSStyle on your website with a Python programmed server.
 You can simply copy the csstyle/csstyle directory from the project archive 
 on your server and then create your own CSStyle calling file.
-You can use csstyle.py to understand how you can make a calling method::
+You can use csstyle.py to understand how you can make a calling method:
   
+.. code-block:: python
+
   from __future__ import print_function
   import optparse
 

@@ -9,14 +9,18 @@ CSStyle is an easy-to-use CSS converter for browsers using Gecko, Presto or
 Webkit engines. It converts CSS values which are experimental in those
 engines. It is mainly used for CSS3 new features.
 
-From::
+From:
+
+.. code-block:: css
 
   div {
      border-radius: 1em;
      transition-duration: 1s;
   }
 
-To::
+To:
+
+.. code-block:: css
 
   div {
      border-radius: 1em;

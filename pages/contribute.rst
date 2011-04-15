@@ -5,7 +5,7 @@
 As a Lazy Person
 ================
 
-Want to write kind words? Please contact guillaume.ayoub[a]kozea.fr.
+Want to write kind words? Please contact guillaume.ayoub@kozea.fr.
 
 
 As a Simple User
