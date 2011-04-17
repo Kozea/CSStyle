@@ -8,7 +8,7 @@ PyPI
 CSStyle is `available on PyPI <http://pypi.python.org/pypi/CSStyle/>`_. To
 install, just type as superuser::
 
-  pip csstyle
+  pip install csstyle
 
 Git Repository
 ==============

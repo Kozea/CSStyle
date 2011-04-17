@@ -41,7 +41,7 @@ On Linux::
 CSStyle is also available with distutils, if you have it you can also install it 
 with::
 
-  pip csstyle
+  pip install csstyle
 
 Simple Usage
 ============
