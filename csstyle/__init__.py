@@ -70,16 +70,18 @@ class Parser(OrderedDict):
                     first_or_last_comment_line = False
                     imported_file = \
                         line.strip(' ;\n').replace('@import', '').strip(' "\'')
+                    if imported_file.startswith('url'):
+                        imported_file = imported_file[3:].lstrip('("\'').rstrip('\'")')
                     text += open(os.path.join(
                             os.path.dirname(filename), imported_file)).read()
         self._parse_sections(text)
-    
+
     def __nonzero__(self):
         for attributes in self.values():
             if attributes:
                 return True
         return False
-                
+
     def __repr__(self):
         """Represent parsed CSS."""
         string = ''
