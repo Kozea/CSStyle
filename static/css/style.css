@@ -3,30 +3,8 @@ HTML
 ------------------------------------------------------------- */
 html {
   background: -moz-linear-gradient(top, #ffffff 0%, #e8e5e3 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e8e5e3));
 }
-
-html:before {
-  content: "\7b";
-  float: left;
-  margin-top: -0.2em;
-  transform: rotate(25deg);
-}
-
-html:after {
-  content: "\7d";
-  float: right;
-  margin-top: -1em;
-}
-
-html:before, html:after{
-  color: #e5e6e0;
-  font-family: 'Georgia';
-  font-size: 50em;
-  font-weight: normal;
-  line-height: 1em;
-  transform: rotate(25deg);
-}
-
 
 /* ------------------------------------------------------------
 BODY
@@ -41,6 +19,33 @@ body {
   width: 800px;
 }
 
+body:before {
+  color: #ffffff;
+  content: "\7b";
+  left: 0;
+  margin-top: -0.2em;
+  top: 0;
+}
+
+body:after {
+  bottom: 0;
+  color: #e5e6e0;
+  content: "\7d";
+  margin-bottom: -0.1em;
+  right: 0;
+}
+
+body:before, body:after{
+  font-family: 'Georgia';
+  font-size: 50em;
+  font-weight: normal;
+  line-height: 1em;
+  opacity: 0.8;
+  position: fixed;
+  transform: rotate(25deg);
+  z-index: -1;
+}
+
 /* -Header-*/
 @font-face {
   font-family: 'Adobe Garamond Pro';
@@ -49,14 +54,11 @@ body {
 
 h1 {
   font-family: 'Adobe Garamond pro';
+  font-size: 6em;
   font-weight: normal;
+  line-height: 2em;
   margin-bottom: 20%;
-  margin-left: 10%;
-}
-
-h1 a {
-  color: #474c20;
-  font-size: 4em;
+  text-align: center;
 }
 
 h1 a:hover, h1 a:focus, h1 a:active {
@@ -73,24 +75,24 @@ h1 a:hover, h1 a:focus, h1 a:active {
 h1:before, h1:after{
   color: #8e983f;
   font-family: 'Georgia';
-  font-size: 5em;
+  font-size: 1.5em;
   font-weight: normal;
 }
 
 h1:before {
   content: "\7b";
-  float: left;
-  margin-left: 25px;
-  margin-top: -100px;
+  display: inline-block;
+  margin-top: -0.5em;
   transform: rotate(45deg);
+  vertical-align: top;
 }
 
 h1:after {
   content: "\7d";
-  float: right;
-  margin-top: 50px;
-  margin-right: 210px;
+  display: inline-block;
+  margin-bottom: -0.3em;
   transform: rotate(45deg);
+  vertical-align: bottom;
 }
 
 
@@ -138,9 +140,9 @@ nav li:hover {
 }
 
 nav li{
-  -moz-transition-duration: 0.6s, 0.6s;
-  -moz-transition-property: background-color, padding-top;
-  -moz-transition-timing-function: linear, ease-out;
+  transition-duration: 0.6s, 0.6s;
+  transition-property: background-color, padding-top;
+  transition-timing-function: linear, ease-out;
 }
 
 /* -Section-*/
@@ -164,7 +166,8 @@ h4 .toc-backref {
 }
 
 pre {
-  background: -moz-radial-gradient(#e5e5e0, #DADAD2) repeat scroll 0 0 transparent;
+  background: -moz-radial-gradient(#e5e5e0, #dadad2);
+  background: -webkit-gradient(circle, #e5e5e0, #dadad2);
   border-radius: 0 0 0 0;
   box-shadow: none;
   color: #ffffff;
@@ -180,7 +183,8 @@ pre {
 
 /* -Contents- */
 .contents {
-  background: -moz-radial-gradient(#e5e5e0, #DADAD2) repeat scroll 0 0 transparent;
+  background: -moz-radial-gradient(#e5e5e0, #dadad2);
+  background: -webkit-gradient(circle, #e5e5e0, #dadad2);
   border-radius: 0 0 0 0;
   box-shadow: none;
   width: 500px;
