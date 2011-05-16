@@ -1,9 +1,18 @@
+@font-face {
+  font-family: 'Adobe Garamond Pro';
+  src: url(images/AGaramondPro-Regular.otf);
+}
+
+@font-face {
+  font-family: 'Georgia';
+  src: url(images/georgia.ttf);
+}
+
 /* ------------------------------------------------------------
 HTML
 ------------------------------------------------------------- */
 html {
-  background: -moz-linear-gradient(top, #ffffff 0%, #e8e5e3 100%);
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e8e5e3));
+  background: linear-gradient(#ffffff, #e8e5e3);
 }
 
 /* ------------------------------------------------------------
@@ -47,11 +56,6 @@ body:before, body:after{
 }
 
 /* -Header-*/
-@font-face {
-  font-family: 'Adobe Garamond Pro';
-  src: url(images/AGaramondPro-Regular.otf);
-}
-
 h1 {
   font-family: 'Adobe Garamond pro';
   font-size: 6em;
@@ -65,11 +69,6 @@ h1 a:hover, h1 a:focus, h1 a:active {
   background: none;
   box-shadow: none;
   text-decoration: none;
-}
-
-@font-face {
-  font-family: 'Georgia';
-  src: url(images/georgia.ttf);
 }
 
 h1:before, h1:after{
@@ -108,14 +107,14 @@ nav ul {
 }
 
 nav li, nav li a {
-  border-radius: 0 0 0 0;
+  border-radius: 0;
   color: #7f7a6a;
   font-size: 24px;
   font-variant: small-caps;
 }
 
 nav li, nav ul {
-  border-radius: 0 0 0 0;
+  border-radius: 0;
   margin-left: 1%;
 }
 
@@ -166,13 +165,13 @@ h4 .toc-backref {
 }
 
 pre {
-  background: -moz-radial-gradient(#e5e5e0, #dadad2);
-  background: -webkit-gradient(circle, #e5e5e0, #dadad2);
-  border-radius: 0 0 0 0;
+  background: radial-gradient(#e5e5e0, #dadad2);
+  border-radius: 0;
   box-shadow: none;
-  color: #ffffff;
+  color: #000000;
   margin: 0 auto;
   margin-left: 0;
+  opacity: 0.8;
   text-shadow: none;
   width: 500px;
 }
@@ -183,9 +182,8 @@ pre {
 
 /* -Contents- */
 .contents {
-  background: -moz-radial-gradient(#e5e5e0, #dadad2);
-  background: -webkit-gradient(circle, #e5e5e0, #dadad2);
-  border-radius: 0 0 0 0;
+  background: radial-gradient(#e5e5e0, #dadad2);
+  border-radius: 0;
   box-shadow: none;
   width: 500px;
 }
