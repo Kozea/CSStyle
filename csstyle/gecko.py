@@ -43,6 +43,13 @@ def transform(parser, keep_existant=True):
             elif attribute.startswith('box'):
                 section['-moz-%s' % attribute] = value
 
+            for gradient_type in (
+                'linear', 'radial', 'repeating-linear', 'repeating-radial'):
+                full_type = '%s-gradient' % gradient_type
+                if value.startswith(full_type):
+                    section[attribute] = value.replace(
+                        full_type, '-moz-%s' % full_type)
+
         parser[name] = section
 
     return parser
