@@ -31,7 +31,7 @@ body {
 body:before {
   color: #ffffff;
   content: "\7b";
-  left: 0;
+  left: -0.1em;
   margin-top: -0.2em;
   top: 0;
 }
@@ -41,7 +41,7 @@ body:after {
   color: #e5e6e0;
   content: "\7d";
   margin-bottom: -0.1em;
-  right: 0;
+  right: -0.1em;
 }
 
 body:before, body:after{
