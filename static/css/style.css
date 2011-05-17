@@ -1,18 +1,17 @@
+/* Fonts */
+
 @font-face {
   font-family: 'Gentium';
   src: url(images/gentium.ttf);
 }
 
-/* ------------------------------------------------------------
-HTML
-------------------------------------------------------------- */
+
+/* Common */
+
 html {
   background: linear-gradient(#ffffff, #e8e5e3);
 }
 
-/* ------------------------------------------------------------
-BODY
-------------------------------------------------------------- */
 body {
   background: none;
   border: none;
@@ -25,7 +24,7 @@ body {
 
 body:before {
   color: #ffffff;
-  content: "\7b";
+  content: '\7b';
   left: -0.05em;
   margin-top: -0.2em;
   top: 0;
@@ -34,7 +33,7 @@ body:before {
 body:after {
   bottom: 0;
   color: #e5e6e0;
-  content: "\7d";
+  content: '\7d';
   margin-bottom: -0.2em;
   margin-right: -0.05em;
   right: 0;
@@ -51,7 +50,33 @@ body:before, body:after{
   z-index: -1;
 }
 
-/* -Header-*/
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a:hover, a:focus {
+  background: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+pre {
+  background: radial-gradient(#e5e5e0, #dadad2);
+  border-radius: 0;
+  box-shadow: none;
+  color: #000000;
+  margin: 0 auto;
+  margin-left: 0;
+  opacity: 0.8;
+  text-shadow: none;
+  width: 500px;
+}
+
+
+/* Headers */
+
 h1 {
   font-family: 'Gentium';
   font-size: 6em;
@@ -75,72 +100,21 @@ h1:before, h1:after{
 }
 
 h1:before {
-  content: "\7b";
+  content: '\7b';
   display: inline-block;
-  margin-top: -0.5em;
+  margin-top: -0.3em;
   transform: rotate(45deg);
   vertical-align: top;
 }
 
 h1:after {
-  content: "\7d";
+  content: '\7d';
   display: inline-block;
   margin-bottom: -0.3em;
   transform: rotate(45deg);
   vertical-align: bottom;
 }
 
-
-/* ------------------------------------------------------------
-NAV
-------------------------------------------------------------- */
-/* -ul-*/
-nav ul {
-  background: none;
-  box-shadow: none;
-  color: #7f7a6a;
-  text-transform: none;
-}
-
-nav li, nav li a {
-  border-radius: 0;
-  color: #7f7a6a;
-  font-size: 24px;
-  font-variant: small-caps;
-}
-
-nav li, nav ul {
-  border-radius: 0;
-  margin-left: 1%;
-}
-
-nav li a:hover, nav li a:focus {
-  background: none;
-  text-decoration: none;
-}
-
-li {
-  margin-left: -3%;
-}
-
-a:hover {
-  background: none;
-  box-shadow: none;
-  text-decoration: none;
-}
-
-nav li:hover {
-  background: #e5e5e0;
-  padding-top: 10px;
-}
-
-nav li{
-  transition-duration: 0.6s, 0.6s;
-  transition-property: background-color, padding-top;
-  transition-timing-function: linear, ease-out;
-}
-
-/* -Section-*/
 h2 {
   color: #7f7a6a;
   font-size: 20px;
@@ -155,28 +129,52 @@ h3 {
   text-shadow: none;
 }
 
-h4 .toc-backref {
+h4 {
   color: #8e983f;
   font-variant: normal;
 }
 
-pre {
-  background: radial-gradient(#e5e5e0, #dadad2);
-  border-radius: 0;
+
+/* Nav */
+
+nav ul {
+  background: none;
   box-shadow: none;
-  color: #000000;
-  margin: 0 auto;
-  margin-left: 0;
-  opacity: 0.8;
-  text-shadow: none;
-  width: 500px;
+  color: #7f7a6a;
+  text-transform: none;
 }
 
-.simple {
-  list-style:none;
+nav li, nav li a {
+  border-radius: 0;
+  color: #7f7a6a;
+  font-size: 24px;
+  font-variant: small-caps;
 }
 
-/* -Contents- */
+nav ul, nav li {
+  border-radius: 0;
+  margin-left: 1%;
+}
+
+nav li a:hover, nav li a:focus {
+  background: none;
+  text-decoration: none;
+}
+
+nav li:hover, nav li:focus {
+  background: #e5e5e0;
+  padding-top: 10px;
+}
+
+nav li {
+  transition-duration: 0.6s, 0.6s;
+  transition-property: background-color, padding-top;
+  transition-timing-function: linear, ease-out;
+}
+
+
+/* Contents */
+
 .contents {
   background: radial-gradient(#e5e5e0, #dadad2);
   border-radius: 0;
@@ -190,19 +188,13 @@ pre {
 }
 
 
-/* ------------------------------------------------------------
-FOOTER
-------------------------------------------------------------- */
+/* Footer */
+
+footer li a {
+  margin: 0 1.5%;
+}
+
 footer li a:hover, footer li a:focus{
   background: none;
   box-shadow: none;
-}
-
-footer li a {
-  margin-left: 3%;
-}
-
-#supported-browsers li {
-  list-style: none;
-  margin-left: -1.5em;
 }
