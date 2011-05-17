@@ -1,11 +1,6 @@
 @font-face {
-  font-family: 'Adobe Garamond Pro';
-  src: url(images/AGaramondPro-Regular.otf);
-}
-
-@font-face {
-  font-family: 'Georgia';
-  src: url(images/georgia.ttf);
+  font-family: 'Gentium';
+  src: url(images/gentium.ttf);
 }
 
 /* ------------------------------------------------------------
@@ -23,7 +18,7 @@ body {
   border: none;
   color: #7f7a6a;
   display: block;
-  font-family: 'arial';
+  font-family: 'Liberation Sans', 'Arial', sans-serif;
   margin: 5em auto;
   width: 800px;
 }
@@ -31,7 +26,7 @@ body {
 body:before {
   color: #ffffff;
   content: "\7b";
-  left: -0.1em;
+  left: -0.05em;
   margin-top: -0.2em;
   top: 0;
 }
@@ -40,12 +35,13 @@ body:after {
   bottom: 0;
   color: #e5e6e0;
   content: "\7d";
-  margin-bottom: -0.1em;
-  right: -0.1em;
+  margin-bottom: -0.2em;
+  margin-right: -0.05em;
+  right: 0;
 }
 
 body:before, body:after{
-  font-family: 'Georgia';
+  font-family: 'Gentium';
   font-size: 50em;
   font-weight: normal;
   line-height: 1em;
@@ -57,7 +53,7 @@ body:before, body:after{
 
 /* -Header-*/
 h1 {
-  font-family: 'Adobe Garamond pro';
+  font-family: 'Gentium';
   font-size: 6em;
   font-weight: normal;
   line-height: 2em;
@@ -73,7 +69,7 @@ h1 a:hover, h1 a:focus, h1 a:active {
 
 h1:before, h1:after{
   color: #8e983f;
-  font-family: 'Georgia';
+  font-family: 'Gentium';
   font-size: 1.5em;
   font-weight: normal;
 }
