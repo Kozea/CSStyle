@@ -181,27 +181,12 @@ pre {
   background: radial-gradient(#e5e5e0, #dadad2);
   border-radius: 0;
   box-shadow: none;
+  font-variant: small-caps;
   width: 500px;
 }
 
 .contents a:hover, .contents a:focus {
   background: none;
-}
-
-.toc-backref {
-  color: #7f7a6a;
-  font-variant: small-caps;
-  text-shadow: none;
-}
-
-#id1, #id2, #id3, #id6, #id7{
-  color: #7f7a6a;
-  font-variant: small-caps;
-  font-weight: bold;
-}
-
-#id4, #id5, #id8{
-  color: #8e983f;
 }
 
 
