@@ -46,7 +46,8 @@ def transform(parser, keep_existant=True):
             for gradient_type in (
                 'linear', 'radial', 'repeating-linear', 'repeating-radial'):
                 full_type = '%s-gradient' % gradient_type
-                if value.startswith(full_type):
+                if hasattr(full_type, 'startswith') and \
+                        value.startswith(full_type):
                     section[attribute] = value.replace(
                         full_type, '-moz-%s' % full_type)
 
