@@ -1,8 +1,8 @@
 /* Fonts */
 
 @font-face {
-  font-family: 'Gentium';
-  src: url(images/gentium.ttf);
+  font-family: 'Garogier';
+  src: url(images/Garogier_unhinted.ttf);
 }
 
 
@@ -17,8 +17,9 @@ body {
   border: none;
   color: #7f7a6a;
   display: block;
-  font-family: 'Liberation Sans', 'Arial', sans-serif;
+  font-family: 'arial', sans-serif;
   margin: 5em auto;
+  padding: 0;
   width: 800px;
 }
 
@@ -40,7 +41,7 @@ body:after {
 }
 
 body:before, body:after{
-  font-family: 'Gentium';
+  font-family: 'Garogier';
   font-size: 50em;
   font-weight: normal;
   line-height: 1em;
@@ -78,12 +79,16 @@ pre {
 /* Headers */
 
 h1 {
-  font-family: 'Gentium';
+  font-family: 'Garogier';
   font-size: 6em;
   font-weight: normal;
   line-height: 2em;
-  margin-bottom: 20%;
   text-align: center;
+  text-transform: lowercase;
+}
+
+h1 a {
+  color: #474C20;
 }
 
 h1 a:hover, h1 a:focus, h1 a:active {
@@ -94,8 +99,8 @@ h1 a:hover, h1 a:focus, h1 a:active {
 
 h1:before, h1:after{
   color: #8e983f;
-  font-family: 'Gentium';
-  font-size: 1.5em;
+  font-family: 'Garogier';
+  font-size: 1.2em;
   font-weight: normal;
 }
 
@@ -178,7 +183,7 @@ nav li {
 .contents {
   background: radial-gradient(#e5e5e0, #dadad2);
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: 1px 1px 7px;
   font-variant: small-caps;
   width: 500px;
 }
