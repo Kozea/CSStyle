@@ -107,6 +107,7 @@ h1:before, h1:after{
 h1:before {
   content: '\7b';
   display: inline-block;
+  margin-right: -0.15em;
   margin-top: -0.3em;
   transform: rotate(45deg);
   vertical-align: top;
