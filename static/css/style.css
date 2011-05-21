@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Garogier';
-  src: url(images/Garogier_unhinted.ttf);
+  src: url(img/garogier.ttf);
 }
 
 
@@ -10,14 +10,15 @@
 
 html {
   background: linear-gradient(#ffffff, #e8e5e3);
+  min-height: 100%;
 }
 
 body {
   background: none;
   border: none;
-  color: #7f7a6a;
+  color: #554;
   display: block;
-  font-family: 'arial', sans-serif;
+  font-family: sans-serif;
   margin: 5em auto;
   padding: 0;
   width: 800px;
@@ -82,7 +83,7 @@ h1 {
   font-family: 'Garogier';
   font-size: 6em;
   font-weight: normal;
-  line-height: 2em;
+  line-height: 1.5em;
   text-align: center;
   text-transform: lowercase;
 }
@@ -197,6 +198,7 @@ nav li {
 /* Footer */
 
 footer li a {
+  color: #887;
   margin: 0 1.5%;
 }
 
