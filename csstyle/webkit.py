@@ -13,20 +13,25 @@ def transform(parser, keep_existant=True):
     """Add Webkit-specific attributes to ``parser``."""
     for name, attributes in parser.items():
         section = OrderedDict()
+        force_keep_existant = False
 
         # Parsing sections
         if '@keyframes' in name:
             parser[name] = {}
-            parser[name.replace('@keyframes', '@-webkit-keyframes')] = \
-                transform(attributes, keep_existant)
+            new_name = name.replace('@keyframes', '@-webkit-keyframes')
+            parser[new_name] = transform(ttributes, keep_existant)
             continue
+        if '::placeholder' in name:
+            parser[name] = {}
+            name = name.replace('::placeholder', '::-webkit-input-placeholder')
+            force_keep_existant = True
 
         if isinstance(attributes, str):
             parser[name] = OrderedDict()
             continue
 
         for attribute, value in attributes.items():
-            if keep_existant:
+            if keep_existant or force_keep_existant:
                 section[attribute] = value
 
             # Parsing attributes
