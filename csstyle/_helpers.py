@@ -5,6 +5,8 @@ CSStyle various helpers for parsers
 
 from copy import deepcopy
 
+# Python 2/3 support
+# pylint: disable=W0622,C0103
 try:
     from itertools import izip, imap
 except ImportError:
@@ -12,6 +14,7 @@ except ImportError:
     map = lambda function, iterable: tuple(imap(function, iterable))
     izip = zip
     zip = lambda *iterables: tuple(izip(*iterables))
+# pylint: enable=W0622,C0103
 
 
 def split_values(values):
@@ -33,9 +36,10 @@ def split_values(values):
 
     return zip(*full_lists)
 
-
 class OrderedDict(dict):
     """Dictionary that remembers insertion order."""
+    # OrderedDict can access the _keys attribute of other dicts
+    # pylint: disable=W0212
     def __init__(self):
         """Initialize an ordered dictionary."""
         super(OrderedDict, self).__init__()
@@ -85,3 +89,5 @@ class OrderedDict(dict):
 
     __repr__ = lambda self: '{%s}' % ', '.join(
         '%s: %s' % (repr(key), repr(value)) for key, value in self.items())
+
+    # pylint: enable=W0212

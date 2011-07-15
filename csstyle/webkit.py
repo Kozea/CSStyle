@@ -19,7 +19,7 @@ def transform(parser, keep_existant=True):
         if '@keyframes' in name:
             parser[name] = {}
             new_name = name.replace('@keyframes', '@-webkit-keyframes')
-            parser[new_name] = transform(ttributes, keep_existant)
+            parser[new_name] = transform(attributes, keep_existant)
             continue
         if '::placeholder' in name:
             parser[name] = {}

@@ -71,7 +71,8 @@ class Parser(OrderedDict):
                     imported_file = \
                         line.strip(' ;\n').replace('@import', '').strip(' "\'')
                     if imported_file.startswith('url'):
-                        imported_file = imported_file[3:].lstrip('("\'').rstrip('\'")')
+                        imported_file = \
+                            imported_file[3:].lstrip('("\'').rstrip('\'")')
                     text += open(os.path.join(
                             os.path.dirname(filename), imported_file)).read()
         self._parse_sections(text)
