@@ -35,7 +35,7 @@ import csstyle
 
 def run():
     """Run CSStyle from command line."""
-    parser = optparse.OptionParser(usage= 'csstyle file [file[..]] [options]')
+    parser = optparse.OptionParser(usage="csstyle file [file[..]] [options]")
     parser.add_option(
         "-v", "--version", action="store_true",
         default=False,
@@ -65,6 +65,6 @@ def run():
             stylesheet = browser_parser.transform(
                 copy.deepcopy(parser), keep_existant=(not options.strip))
             print(stylesheet, end='')
-                                          
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run()
