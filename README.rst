@@ -1,10 +1,6 @@
-=========
- CSStyle
-=========
-
---------
- README
---------
+========
+ Readme
+========
 
 The CSStyle Project is a free and open-source experimental CSS converter for 
 browser engines.
