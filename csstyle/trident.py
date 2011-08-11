@@ -21,6 +21,14 @@ def transform(parser, keep_existant=True):
             if attribute.startswith('transform'):
                 section['-ms-%s' % attribute] = value
 
+            for gradient_type in (
+                'linear', 'radial', 'repeating-linear', 'repeating-radial'):
+                full_type = '%s-gradient' % gradient_type
+                if hasattr(value, 'startswith') and \
+                        value.startswith(full_type):
+                    section[attribute] = value.replace(
+                        full_type, '-ms-%s' % full_type)
+
         parser[name] = section
 
     return parser
