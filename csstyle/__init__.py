@@ -29,11 +29,8 @@ BROWSERS = ('webkit', 'presto', 'gecko', 'trident')
 VERSION = "git"
 
 import os
-from copy import deepcopy
 
-from . import gecko
-from . import webkit
-from . import presto
+from . import gecko, webkit, presto, trident
 from ._helpers import OrderedDict
 
 
