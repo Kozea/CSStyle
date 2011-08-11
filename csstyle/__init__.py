@@ -25,7 +25,7 @@ Parser class for CSStyle.
 
 """
 
-BROWSERS = ('webkit', 'presto', 'gecko')
+BROWSERS = ('webkit', 'presto', 'gecko', 'trident')
 VERSION = "git"
 
 import os
