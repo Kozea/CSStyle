@@ -20,3 +20,5 @@ def transform(parser, keep_existant=True):
 
             if attribute.startswith('transform'):
                 section['-ms-%s' % attribute] = value
+
+    return parser
