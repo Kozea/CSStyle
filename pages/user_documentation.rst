@@ -57,12 +57,8 @@ For example::
 Advanced Usage with Python Server
 =================================
 
-If you want to use CSStyle on your website with a Python programmed server.
-You can simply copy the csstyle/csstyle directory from the project archive 
-on your server and then create your own CSStyle calling file.
-
-You can use ``csstyle.py`` to understand how you can make a calling
-method. Here is an example:
+If you want to use CSStyle on your python server, you can simply install csstyle
+from pip and then use it as a module:
   
 .. code-block:: python
 
@@ -72,3 +68,5 @@ method. Here is an example:
       parser = csstyle.Parser(text="a { transition: 1s }")
       browser_parser = getattr(csstyle, browser)
       print(browser_parser.transform(parser, keep_existant=False))
+
+Have a look at ``csstyle.py`` for more technical details.
