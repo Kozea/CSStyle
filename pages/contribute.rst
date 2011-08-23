@@ -18,6 +18,5 @@ Found a bug? Want a new feature? Report a new issue on the `CSStyle bug-tracker
 As a Hacker
 ===========
 
-Interested in hacking? Feel free to clone the `git repository on Gitorious
-<http://www.gitorious.org/csstyle/csstyle>`_ if you want to add new features,
-fix bugs or update documentation.
+Interested in hacking? Feel free to clone the :codelink:`git repository on
+Github` if you want to add new features, fix bugs or update documentation.
