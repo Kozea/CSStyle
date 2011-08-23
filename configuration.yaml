@@ -1,0 +1,20 @@
+name: CSStyle
+description: CSS 3 Preprocessor
+license: GPLv3
+public: true
+url: http://www.csstyle.org/
+
+menu:
+  - Documentation:
+      link: /documentation/
+  - Contribute:
+      link: /contribute/
+  - Download:
+      link: /download/
+
+vcs (git):
+  url: git://github.com/Kozea/CSStyle.git
+  path: /var/db/git/csstyle.git
+
+code browser (github):
+  project name: Kozea/CSStyle

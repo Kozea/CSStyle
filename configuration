@@ -1,9 +1,0 @@
-{
-  "name": "CSStyle",
-  "description": "CSS 3 Preprocessor",
-  "menu": [
-    {"name": "Documentation", "link": "/documentation"},
-    {"name": "Contribute", "link": "/contribute"},
-    {"name": "Download", "link": "/download"}
-  ]
-}
