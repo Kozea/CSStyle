@@ -5,9 +5,9 @@ CSS New Features for Everyone
 Presentation
 ============
 
-CSStyle is an easy-to-use CSS converter for browsers using Gecko, Presto or
-Webkit engines. It converts CSS values which are experimental in those
-engines. It is mainly used for CSS3 new features.
+CSStyle is an easy-to-use CSS converter for browsers using Gecko, Presto,
+Trident or Webkit engines. It converts CSS values which are experimental in
+those engines. It is mainly used for CSS3 new features.
 
 From:
 
@@ -48,6 +48,7 @@ under GPL version 3.
 Supported Browsers
 ==================
 
-- Based on Webkit: Chrome, Safari, Epiphany, Midori, etc.
 - Based on Gecko: Firefox, SeaMonkey, Camino, etc.
 - Based on Presto: Opera
+- Based on Trident: Internet Explorer
+- Based on Webkit: Chrome, Safari, Epiphany, Midori, etc.
