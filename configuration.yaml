@@ -18,3 +18,11 @@ vcs (git):
 
 code browser (github):
   project name: Kozea/CSStyle
+
+bug tracker (redmine):
+  base url: http://redmine.kozea.fr/
+  project name: csstyle
+
+continuous integration (jenkins):
+  base url: http://jenkins.kozea.org/
+  project name: CSStyle
