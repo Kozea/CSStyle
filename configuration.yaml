@@ -12,6 +12,10 @@ menu:
   - Download:
       link: /download/
 
+project (git):
+  url: git://github.com/Kozea/CSStyle.git
+  path: csstyle
+
 vcs (git):
   url: git://github.com/Kozea/CSStyle.git
   path: /var/db/git/csstyle.git
